@@ -1,9 +1,18 @@
+@import "../sass/variables.scss";
+
+.form-wrapper {
+  padding: 92px;
+}
+
 .form-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 
   padding: 16px;
-  justify-content: center;
+  border: solid 2px black;
+  border-radius: 0.4em;
+  background-color: $light-brand;
 }
 
 .form-header {
@@ -24,7 +33,7 @@
 
 .data-set {
   font-size: 1.2em;
-  background-color: lightgray;
+  background-color: $light-accent;
 }
 
 .field--title {

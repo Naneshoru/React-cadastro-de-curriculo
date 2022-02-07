@@ -1,0 +1,74 @@
+@import 'src/sass/variables';
+
+.App {
+  text-align: center;
+  color: white;
+}
+
+.form-container {
+  animation-name: fade-in;
+  animation-duration: 300ms;
+  animation-delay: 0;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
+  0% {
+      opacity: 0;
+  }
+
+  100% {
+      opacity: 1;
+  }
+}
+  
+html, body { height: 100%; background-color: $main-brand; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+input, select, textarea, option {
+  color: inherit;
+  // background-color: inherit;
+  background-color: transparent;
+}
+
+.submit-button {
+  font-size: 1.1em;
+  align-self: center;
+}
+
+button {
+  background: 
+  linear-gradient(135deg, rgba(#000000,0.2),rgba(#ffffff,0.2)),
+  $main-brand;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  border:none;
+
+  &:focus{
+      outline: none;
+  }
+  &:hover{
+      background: 
+      linear-gradient(135deg, rgba(#000000,0.2),rgba(#ffffff,0.2)),
+      $light-accent;
+      cursor: pointer;
+      color: $light-shade;
+  }
+  &:disabled{
+      background-color: $dark-accent;
+      color: $dark-shade;
+      cursor: not-allowed;
+  }   
+  &.--black{
+      background: 
+      linear-gradient(135deg, rgba(#000000,0.2),rgba(#ffffff,0.2)),
+      #2c2c2c;
+  }
+  &.--full{
+      width: 100%;
+  }
+}

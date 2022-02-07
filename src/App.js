@@ -1,6 +1,6 @@
 import Registration from './components/Registration';
 
-import './App.css';
+import './App.scss';
 
 function App() {
   return (
