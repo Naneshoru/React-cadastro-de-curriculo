@@ -29,9 +29,8 @@ html, body { height: 100%; background-color: $main-brand; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 input, select, textarea, option {
-  color: inherit;
-  // background-color: inherit;
-  background-color: transparent;
+  color: white;
+  background-color: $main-brand;
 }
 
 .submit-button {
