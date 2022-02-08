@@ -57,3 +57,15 @@
 .date-input {
   padding: 2px;
 }
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator{
+  cursor: pointer;
+  filter: invert(1);
+}
+
+input,
+label 
+{
+  color: white !important;
+}

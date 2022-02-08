@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-
+import { FormControl, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
 import './Registration.scss'
 
 const Registration = () => {
   const [state, setState] = useState({
-    name: 'Ex: Ricardo Atakiama',
+    name: '',
     description: '',
     maritalStatus: 'Single',
     birthDate: ''
@@ -47,6 +47,14 @@ const Registration = () => {
     e.preventDefault();
   }
 
+  const options = [
+    {label: "Solteiro(a)", value: 'Single', style: { color: 'red' }},
+    {label: "Casado(a)", value: 'Married', style: { color: 'blue' }},
+    {label: "Separado(a)", value: 'Separate', style: { color: 'blue' }},
+    {label: "Divorciado(a)", value: 'Divorced', style: { color: 'blue' }},
+    {label: "Viúvo(a)", value: 'Widowed', style: { color: 'blue' }}
+  ]
+
   return ( 
     <div className='form-wrapper'>
       <form className='form-container' onSubmit={(e) => handleSubmit(e)} >
@@ -57,40 +65,57 @@ const Registration = () => {
 
         <div className='form-side-by-side'>
           <div className='form--left-side'>
-            <label className='field--title' htmlFor="fullName">Nome: </label>
-            <input className='field--input' name="fullName" type="text" value={state.name} onChange={handleChange}/>
+            <TextField 
+              type="text"
+              variant='outlined' color='secondary'
+              className='field--input' name="fullName"  
+              label='Nome' placeholder='Ex: Ricardo Atakiama'
+              value={state.name} onChange={handleChange}
+            />
           </div>
 
-          <div className='form--right-side'>
-            <label className='field--title' htmlFor="maritalStatus">Estado civil: </label>
-            <select className='field--input' name="maritalStatus" id="maritalStatus" value={state.maritalStatus} onChange={handleChange}>
-              <option value="Single">Solteiro(a)</option>
-              <option value="Married">Casado(a)</option>
-              <option value="Separate">Separado(a)</option>
-              <option value="Divorced">Divorciado(a)</option>
-              <option value="Widowed">Viúvo(a)</option>
-            </select>
-          </div>
+          <FormControl className='form--right-side'
+            variant='outlined' color='secondary'
+          >
+            <InputLabel className='field--title' id="maritalStatusLabel">Estado civil: </InputLabel>
+            <Select 
+              variant='outlined' color='secondary'  
+              className='field--input' name="maritalStatus" id="maritalStatus" 
+              label='Estado civil:' labelId='maritalStatusLabel'
+              value={state.maritalStatus} onChange={handleChange}
+              options={options}
+            >
+              {options.map((option) => {
+                return <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>
+              })}
+            </Select>
+          </FormControl>
         </div>
         <div className='form-side-by-side'>
 
           <div className='form--left-side'>
-            <label className='field--title' htmlFor="birthDate">Data de nascimento: </label>
-            <input className='field--input date-input' name="birthDate" type="date" value={state.birthDate} onChange={handleChange}/>
+            <TextField 
+              type="date"
+              // format="DD/MM/yyyy"
+              variant='outlined' color='secondary'  
+              className='field--input date-input' name="birthDate" label='Data de nascimento: '
+              value={state.birthDate} onChange={handleChange}
+              InputLabelProps={{ shrink: true }}
+            />
           </div>
 
           <div className='form--right-side'>
-            <label className='field--title' htmlFor="description">Descrição profissional: </label>
-            <textarea className='field--input' name="description" id="description" cols="30" rows="10" value={state.description} onChange={handleChange}
+            <TextField 
+              multiline rows="10"
+              variant='outlined' color='secondary'  
+              className='field--input' name="description" id="description"  
+              value={state.description} onChange={handleChange}
               placeholder='Faça um resumo de suas qualificações, habilidades e realizações profissionais.'
-            ></textarea>
+              label='Descrição profissional: '
+              >
+            </TextField>
           </div>
         </div>
-            
-        {/* <div className='field'>
-          <label className='field--title' htmlFor="fullName">Nome: </label>
-          <input className='field--input' name="fullName" type="text" value={state.name} onChange={handleChange}/>
-        </div> */}
 
         <div className='form-footer'>
           <button type="submit" className='submit-button'>
