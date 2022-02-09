@@ -8,17 +8,19 @@ import { createTheme } from '@material-ui/core/styles';
 const theme = createTheme ({
   overrides: {
     MuiOutlinedInput: {
-      multiline: {
-        color: 'white' // cor do placeholder do TextField multiline (textarea)
+      root: {
+        color: 'white', // todos os textos
+        
+        '& $notchedOutline': { // borda do campo
+          border: `2px solid ${Variables.lightBrand} `,
+        },
+        '&:hover $notchedOutline': {
+          border: '2px solid darkgray'
+        },
+        "&$focused $notchedOutline": {
+        }
       }
-    },
-
-    MuiSelect: {
-      select: {
-        color: 'white',
-        backgroundColor: Variables.mainBrand,
-      }
-    },
+    }
   }
 });
 
@@ -33,4 +35,3 @@ function App() {
 }
 
 export default App;
-export {Variables}

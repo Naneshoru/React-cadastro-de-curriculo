@@ -41,7 +41,7 @@ input, select, textarea, option {
 button {
   background: 
   linear-gradient(135deg, rgba(#000000,0.2),rgba(#ffffff,0.2)),
-  $main-brand;
+  $light-accent;
   color: white;
   padding: 8px 16px;
   border-radius: 5px;
@@ -53,7 +53,7 @@ button {
   &:hover{
       background: 
       linear-gradient(135deg, rgba(#000000,0.2),rgba(#ffffff,0.2)),
-      $light-accent;
+      $light-brand;
       cursor: pointer;
       color: $light-shade;
   }

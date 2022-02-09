@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MenuItem, TextField } from '@material-ui/core';
+import { Checkbox, FormControl, FormControlLabel, MenuItem, TextField } from '@material-ui/core';
 import './Registration.scss'
 
 const Registration = () => {
@@ -11,7 +11,7 @@ const Registration = () => {
     email: '',
     objective: '',
     phone: '',
-    cell: ''
+    cell: '',
   });
 
   // https://restcountries.com/v3.1/all
@@ -51,21 +51,31 @@ const Registration = () => {
 
   const handleSubmit = (e) => {
     alert(`
-    name: ${state.name}, 
-    description: ${state.description}
-    birthDate: ${state.birthDate}
-    maritalStatus: ${state.maritalStatus}
+      name: ${state.name}, 
+      description: ${state.description}
+      birthDate: ${state.birthDate}
+      maritalStatus: ${state.maritalStatus}
+      email: ${state.email}
+      objective: ${state.objective}
+      phone: ${state.phone}
+      cell: ${state.cell}
     `)
     e.preventDefault();
   }
 
-  const options = [
-    {label: "Solteiro(a)", value: 'Single', style: { color: 'red' }},
-    {label: "Casado(a)", value: 'Married', style: { color: 'blue' }},
-    {label: "Separado(a)", value: 'Separate', style: { color: 'blue' }},
-    {label: "Divorciado(a)", value: 'Divorced', style: { color: 'blue' }},
-    {label: "Viúvo(a)", value: 'Widowed', style: { color: 'blue' }}
+  const maritalOptions = [
+    {label: "Solteiro(a)", value: 'Single'},
+    {label: "Casado(a)", value: 'Married'},
+    {label: "Separado(a)", value: 'Separate'},
+    {label: "Divorciado(a)", value: 'Divorced'},
+    {label: "Viúvo(a)", value: 'Widowed'}
   ]
+
+  const checkedValueToEventName = (name, value) => ({
+    target: {
+      name, value
+    }
+  })
 
   return ( 
     <div className='form-wrapper'>
@@ -78,23 +88,24 @@ const Registration = () => {
         <div className='form-side-by-side'>
           <div className='form--left-side'>
             <TextField 
-              type="text"
+              type="text" name="fullName"
               variant='outlined' color='secondary'
-              className='field--input' name="fullName"  
+              className='field--input'
               label='Nome' placeholder='Ex: Ricardo Atakiama'
               value={state.name} onChange={handleChange}
             />
           </div>
           <div className='form--right-side'>
             <TextField 
-              select
+              select name="maritalStatus"
               variant='outlined' color='secondary'  
-              className={`field--input select`} name="maritalStatus" id="maritalStatus" 
+              className={`field--input align-left`} 
               label='Estado civil:'
               value={state.maritalStatus} onChange={handleChange}
-              options={options}
+              options={maritalOptions}
+             
             >
-              {options.map((option) => {
+              {maritalOptions.map((option) => {
                 return <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>
               })}
             </TextField>
@@ -103,9 +114,9 @@ const Registration = () => {
         <div className='form-side-by-side'>
           <div className='form--left-side'>
             <TextField
-              type='email'
+              type='email' name='email'
               variant='outlined' color='secondary'
-              className='field--input' id='email' name='email'
+              className='field--input'
               label='E-mail' placeholder='Ex: atakiama@usp.br'
               value={state.email} onChange={handleChange}
             >
@@ -114,12 +125,12 @@ const Registration = () => {
 
           <div className='form--right-side'>
             <TextField 
-              type="date"
+              type="date" name="birthDate"
               // format="DD/MM/yyyy"
               variant='outlined' color='secondary'  
-              className='field--input date-input' name="birthDate" label='Data de nascimento: '
+              className='field--input date-input' 
+              label='Data de nascimento' InputLabelProps={{ shrink: true }}
               value={state.birthDate} onChange={handleChange}
-              InputLabelProps={{ shrink: true }}
             />
           </div>
         </div>
@@ -127,9 +138,9 @@ const Registration = () => {
         <div className='form-side-by-side'>
           <div className='form--left-side'>
             <TextField
-              type='number'
+              type='text' name="phone"
               variant='outlined' color='secondary'
-              className='field--input' name="phone" id="phone"  
+              className='field--input'
               label='Telefone' placeholder='Ex: (12)12345-1234'
               value={state.phone} onChange={handleChange}
             >
@@ -137,9 +148,9 @@ const Registration = () => {
           </div>
           <div className='form--right-side'>
             <TextField
-              type='number'
+              type='text' name="cell"
               variant='outlined' color='secondary'
-              className='field--input' name="cell" id="cell"  
+              className='field--input'
               label='Celular' placeholder='Ex: (16)99464-3295'
               value={state.cell} onChange={handleChange}
             >
@@ -147,12 +158,14 @@ const Registration = () => {
           </div>
         </div>
 
+    
+
         <div className='form-side-by-side'>
           <div className='form--left-side'>
               <TextField
-                type='text'
+                type='text' name="objective"
                 variant='outlined' color='secondary'
-                className='field--input' name="objective" id="objective"  
+                className='field--input'   
                 label='Objetivo profissional' placeholder='Ex: Desenvolvimento Front-End'
                 value={state.objective} onChange={handleChange}
               >
@@ -163,9 +176,9 @@ const Registration = () => {
         <div className='form-side-by-side'>
           <div className='form--left-side'>
             <TextField 
-              multiline rows="10"
+              multiline name="description" rows="10"
               variant='outlined' color='secondary'  
-              className='field--input' name="description" id="description"  
+              className='field--input'   
               value={state.description} onChange={handleChange}
               placeholder='Faça um resumo de suas qualificações, habilidades e realizações profissionais.'
               label='Descrição profissional: '
@@ -179,9 +192,7 @@ const Registration = () => {
             Enviar
           </button>
         </div>
-
       </form>
-
     </div>
 
   );
