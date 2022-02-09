@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FormControl, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
+import { MenuItem, TextField } from '@material-ui/core';
 import './Registration.scss'
 
 const Registration = () => {
@@ -7,7 +7,11 @@ const Registration = () => {
     name: '',
     description: '',
     maritalStatus: 'Single',
-    birthDate: ''
+    birthDate: '',
+    email: '',
+    objective: '',
+    phone: '',
+    cell: ''
   });
 
   // https://restcountries.com/v3.1/all
@@ -18,19 +22,27 @@ const Registration = () => {
     switch (e.target.name) {
       case 'fullName':
         setState({...state, name: e.target.value });
-        console.log(state.name)
-        break;
-      case 'maritalStatus':
-        setState({...state, maritalStatus: e.target.value });
-        console.log(state.maritalStatus)
         break;
       case 'description':
         setState({...state, description: e.target.value });
-        console.log(state.description)
+        break;
+      case 'maritalStatus':
+        setState({...state, maritalStatus: e.target.value });
         break;
       case 'birthDate':
         setState({...state, birthDate: e.target.value });
-        console.log(state.birthDate)
+        break;
+      case 'email':
+        setState({...state, email: e.target.value });
+        break;
+      case 'objective':
+        setState({...state, objective: e.target.value });
+        break;
+      case 'phone':
+        setState({...state, phone: e.target.value });
+        break;
+      case 'cell':
+        setState({...state, cell: e.target.value });
         break;
       default:
         break;
@@ -73,14 +85,12 @@ const Registration = () => {
               value={state.name} onChange={handleChange}
             />
           </div>
-
-          <div className='form--right-side'
-            variant='outlined' color='secondary'
-          >
-            <TextField select
+          <div className='form--right-side'>
+            <TextField 
+              select
               variant='outlined' color='secondary'  
               className={`field--input select`} name="maritalStatus" id="maritalStatus" 
-              label='Estado civil:' labelId='maritalStatusLabel'
+              label='Estado civil:'
               value={state.maritalStatus} onChange={handleChange}
               options={options}
             >
@@ -91,8 +101,18 @@ const Registration = () => {
           </div>
         </div>
         <div className='form-side-by-side'>
-
           <div className='form--left-side'>
+            <TextField
+              type='email'
+              variant='outlined' color='secondary'
+              className='field--input' id='email' name='email'
+              label='E-mail' placeholder='Ex: atakiama@usp.br'
+              value={state.email} onChange={handleChange}
+            >
+            </TextField>
+          </div>
+
+          <div className='form--right-side'>
             <TextField 
               type="date"
               // format="DD/MM/yyyy"
@@ -102,8 +122,46 @@ const Registration = () => {
               InputLabelProps={{ shrink: true }}
             />
           </div>
+        </div>
 
+        <div className='form-side-by-side'>
+          <div className='form--left-side'>
+            <TextField
+              type='number'
+              variant='outlined' color='secondary'
+              className='field--input' name="phone" id="phone"  
+              label='Telefone' placeholder='Ex: (12)12345-1234'
+              value={state.phone} onChange={handleChange}
+            >
+            </TextField>
+          </div>
           <div className='form--right-side'>
+            <TextField
+              type='number'
+              variant='outlined' color='secondary'
+              className='field--input' name="cell" id="cell"  
+              label='Celular' placeholder='Ex: (16)99464-3295'
+              value={state.cell} onChange={handleChange}
+            >
+            </TextField>
+          </div>
+        </div>
+
+        <div className='form-side-by-side'>
+          <div className='form--left-side'>
+              <TextField
+                type='text'
+                variant='outlined' color='secondary'
+                className='field--input' name="objective" id="objective"  
+                label='Objetivo profissional' placeholder='Ex: Desenvolvimento Front-End'
+                value={state.objective} onChange={handleChange}
+              >
+              </TextField>
+          </div>
+        </div>
+
+        <div className='form-side-by-side'>
+          <div className='form--left-side'>
             <TextField 
               multiline rows="10"
               variant='outlined' color='secondary'  
