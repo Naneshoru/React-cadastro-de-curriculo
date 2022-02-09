@@ -12,7 +12,7 @@
   padding: 16px;
   border: solid 2px black;
   border-radius: 0.4em;
-  background-color: $light-brand;
+  background-color: $main-brand;
 }
 
 .form-header {
@@ -34,6 +34,7 @@
 .data-set {
   font-size: 1.2em;
   background-color: $light-accent;
+  margin-bottom: 10px;
 }
 
 .field--title {
@@ -68,4 +69,8 @@ input,
 label 
 {
   color: white !important;
+}
+
+.select {
+  text-align: left;
 }

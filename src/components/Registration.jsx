@@ -74,13 +74,12 @@ const Registration = () => {
             />
           </div>
 
-          <FormControl className='form--right-side'
+          <div className='form--right-side'
             variant='outlined' color='secondary'
           >
-            <InputLabel className='field--title' id="maritalStatusLabel">Estado civil: </InputLabel>
-            <Select 
+            <TextField select
               variant='outlined' color='secondary'  
-              className='field--input' name="maritalStatus" id="maritalStatus" 
+              className={`field--input select`} name="maritalStatus" id="maritalStatus" 
               label='Estado civil:' labelId='maritalStatusLabel'
               value={state.maritalStatus} onChange={handleChange}
               options={options}
@@ -88,8 +87,8 @@ const Registration = () => {
               {options.map((option) => {
                 return <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>
               })}
-            </Select>
-          </FormControl>
+            </TextField>
+          </div>
         </div>
         <div className='form-side-by-side'>
 
