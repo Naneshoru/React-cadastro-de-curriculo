@@ -15,7 +15,7 @@ const theme = createTheme ({
           border: `2px solid ${Variables.lightBrand} `,
         },
         '&:hover $notchedOutline': {
-          border: '2px solid darkgray'
+          borderColor: 'lightgray'
         },
         "&$focused $notchedOutline": {
         }
