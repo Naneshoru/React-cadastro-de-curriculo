@@ -12,6 +12,7 @@ const Registration = () => {
     objective: '',
     phone: '',
     cell: '',
+    hasChild: false
   });
 
   // https://restcountries.com/v3.1/all
@@ -44,6 +45,9 @@ const Registration = () => {
       case 'cell':
         setState({...state, cell: e.target.value });
         break;
+      case 'hasChild':
+        setState({...state, hasChild: e.target.value });
+        break;
       default:
         break;
     }
@@ -59,6 +63,7 @@ const Registration = () => {
       objective: ${state.objective}
       phone: ${state.phone}
       cell: ${state.cell}
+      hasChild: ${state.hasChild}
     `)
     e.preventDefault();
   }
@@ -158,7 +163,24 @@ const Registration = () => {
           </div>
         </div>
 
-    
+        <div className='form-side-by-side'>
+                  
+          <div className='form--left-side'   >
+            <FormControl className='field--input'>
+              <FormControlLabel control={
+                <Checkbox
+                  name="hasChild"  
+                  color='secondary'
+                  checked={state.hasChild} onChange={(e) => handleChange(checkedValueToEventName('hasChild', e.target.checked))}
+                >
+                </Checkbox>}
+                label='Possui filho(s)?'
+                
+              >
+              </FormControlLabel>
+            </FormControl>
+          </div>
+        </div>
 
         <div className='form-side-by-side'>
           <div className='form--left-side'>
