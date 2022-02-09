@@ -18,8 +18,13 @@ const theme = createTheme ({
           borderColor: 'lightgray'
         },
         "&$focused $notchedOutline": {
-        }
+        },
       }
+    },
+    MuiCheckbox: {
+      root: {
+        color: 'white', 
+      },
     }
   }
 });
