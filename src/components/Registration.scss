@@ -34,7 +34,7 @@
 .data-category {
   font-size: 1.2em;
   background-color: $light-accent;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
 .field--title {
@@ -74,4 +74,9 @@ label
 
 .align-left {
   text-align: left;
+}
+
+button {
+  margin: 8px;
+  font-size: 1.1em;
 }

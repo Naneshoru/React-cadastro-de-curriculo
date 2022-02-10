@@ -3,6 +3,8 @@ import { TextField } from "@material-ui/core";
 const ProfissionalInfo = ({ state, handleChange }) => {
   return ( 
     <>
+      <div className='data-category'><p>Dados profissionais</p></div>
+
       <div className='form-side-by-side'>
         <div className='form--left-side'>
           <TextField

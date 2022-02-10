@@ -4,7 +4,9 @@ import ProfissionalInfo from './ProfissionalInfo';
 import './Registration.scss'
 
 const Registration = () => {
+  const lastPage = 2;
   const [state, setState] = useState({
+    step: 1,
     name: '',
     description: '',
     maritalStatus: 'Single',
@@ -65,8 +67,34 @@ const Registration = () => {
       phone: ${state.phone}
       cell: ${state.cell}
       hasChild: ${state.hasChild}
+      step: ${state.step}
     `)
     e.preventDefault();
+  }
+
+  const nextStep = (e) => {
+    e.preventDefault();
+    const { step } = state;
+
+    setState({ ...state, step: step + 1 })
+  }
+
+  const previousStep = (e) => {
+    e.preventDefault();
+    const { step } = state;
+
+    setState({ ...state, step: step - 1 })
+  }
+
+  const setCurrentPage = (state) => {
+    switch (state.step) {
+      case 1:
+        return (<PersonalInfo state={state}  handleChange={handleChange} />);
+      case 2:
+        return (<ProfissionalInfo state={state}  handleChange={handleChange} />);
+      default:
+        return null;
+    }
   }
 
   return ( 
@@ -75,19 +103,16 @@ const Registration = () => {
         
         <div className='form-header'><strong><p>Currículo</p></strong></div>
 
-        <div className='data-category'><p>Dados pessoais</p></div>
-
-        <PersonalInfo state={state}  handleChange={handleChange} />
-        <ProfissionalInfo state={state}  handleChange={handleChange} />
+        {setCurrentPage(state)}
 
         <div className='form-footer'>
-          <button type="submit" className='submit-button'>
-            Enviar
-          </button>
+          {state.step > 1 && <button onClick={(e) => previousStep(e)}>Voltar</button>}
+          {state.step < lastPage && <button onClick={(e) => nextStep(e)}>Próximo</button>}
+
+          {state.step === lastPage && <button type="submit" className='submit-button'>Enviar</button>}
         </div>
       </form>
     </div>
-
   );
 }
  
