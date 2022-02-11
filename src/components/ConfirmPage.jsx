@@ -23,7 +23,7 @@ const ConfirmInfo = ({ state }) => {
       case 'url':
         return 'Link';
       case 'description':
-        return 'descrição';
+        return 'Descrição';
       case 'curriculum':
         return 'Currículo';
       default:
@@ -34,7 +34,7 @@ const ConfirmInfo = ({ state }) => {
   return ( 
     <>
       <h3>Confirme seus dados</h3>
-      <List>    
+      <List style={{ padding: '24px' }}>    
         {Object.keys(state).map((field) => {
           return (
             <ListItem key={field} >
