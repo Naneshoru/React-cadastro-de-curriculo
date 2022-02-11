@@ -22,7 +22,7 @@ const PersonalInfo = ({ state, handleChange }) => {
 
       <div className='form-side-by-side'>
         <div className='form--left-side'>
-          <TextField 
+          <TextField autoFocus
             type="text" name="fullName"
             variant='outlined' color='secondary'
             className='field--input'

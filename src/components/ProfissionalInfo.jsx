@@ -7,7 +7,7 @@ const ProfissionalInfo = ({ state, handleChange }) => {
 
       <div className='form-side-by-side'>
         <div className='form--left-side'>
-          <TextField
+          <TextField autoFocus
             type='text' name="objective"
             variant='outlined' color='secondary'
             className='field--input'   
@@ -45,7 +45,7 @@ const ProfissionalInfo = ({ state, handleChange }) => {
             type='file' name="curriculum"
             variant='outlined' color='secondary'
             className='field--input'
-            // label='Currículo'
+            label='Currículo' InputLabelProps={{ shrink: true }}
             value={state.curriculum} onChange={handleChange}
           >
           </TextField>
