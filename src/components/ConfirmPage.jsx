@@ -1,4 +1,5 @@
 import { List, ListItem, ListItemText } from '@material-ui/core';
+import moment from 'moment'
 import React from 'react'
 
 const ConfirmInfo = ({ state }) => {
@@ -41,7 +42,7 @@ const ConfirmInfo = ({ state }) => {
               <ListItemText primary={
                 <>
                   <span className='property'>{ propertiesToPortuguese(field) + ': ' }</span> 
-                  <span className='value'>{ state[field] }</span>
+                  <span className='value'>{ moment(state[field]).format('DD-MM-YYYY').toString() }</span>
                 </>
               } />
             </ListItem>
