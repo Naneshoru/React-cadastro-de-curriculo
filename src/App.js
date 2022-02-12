@@ -1,14 +1,14 @@
 import Registration from './components/Registration';
 import { ThemeProvider } from '@material-ui/core';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers'
-import DateFnsUtils from '@date-io/date-fns';
+import MomentUtils from '@date-io/moment'
 import DarkTheme from './DarkTheme'
 
 import './App.scss';
 
 function App() {
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    <MuiPickersUtilsProvider utils={MomentUtils}>
       <ThemeProvider theme={DarkTheme}>
         <div className="App">
           <Registration />

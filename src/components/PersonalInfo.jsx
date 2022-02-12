@@ -1,6 +1,5 @@
 import { Checkbox, FormControl, FormControlLabel, MenuItem, TextField } from '@material-ui/core';
 import { KeyboardDatePicker } from '@material-ui/pickers'
-import MomentUtils from '@date-io/moment'
 import React from 'react';
 
 const PersonalInfo = ({ state, handleChange }) => {
@@ -65,7 +64,7 @@ const PersonalInfo = ({ state, handleChange }) => {
             autoOk
             disableToolbar
             id='date-picker' name="birthDate"            
-            format="dd/MM/yyyy" 
+            format="DD/MM/yyyy" 
             inputVariant="outlined"
             className='field--input date-input' 
             label='Data de nascimento'
