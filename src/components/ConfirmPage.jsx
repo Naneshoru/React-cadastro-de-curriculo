@@ -32,6 +32,27 @@ const ConfirmInfo = ({ state }) => {
     }
   }
 
+  const valuesToPortuguese = (value) => {
+    switch (value) {
+      case 'Single':
+        return 'Solteiro(a)'
+      case 'Married':
+        return 'Casado(a)'
+      case 'Separate':
+        return 'Separado(a)'
+      case 'Divorciado':
+        return 'Divorced(a)'
+      case 'Widowed':
+        return 'Viúvo(a)'
+      case true:
+        return 'Sim'
+      case false:
+        return 'Não'
+      default:
+        break;
+    }
+  }
+
   const formatIfDate = (date) => {
     const formattedDate = moment(date).format('DD-MM-YYYY');
     return moment(date).isValid() ? formattedDate : date
@@ -47,7 +68,7 @@ const ConfirmInfo = ({ state }) => {
               <ListItemText primary={
                 <>
                   <span className='property'>{ propertiesToPortuguese(field) + ': ' }</span> 
-                  <span className='value'>{ formatIfDate(state[field]).toString()}</span>
+                  <span className='value'>{ valuesToPortuguese(formatIfDate(state[field])) }</span>
                 </>
               } />
             </ListItem>
