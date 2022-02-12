@@ -2,7 +2,7 @@ import { Checkbox, FormControl, FormControlLabel, MenuItem, TextField } from '@m
 import { KeyboardDatePicker } from '@material-ui/pickers'
 import React from 'react';
 
-const PersonalInfo = ({ state, handleChange }) => {
+const PersonalInfo = ({ state, handleChange, errors }) => {
   const maritalOptions = [
     {label: "Solteiro(a)", value: 'Single'},
     {label: "Casado(a)", value: 'Married'},
@@ -29,6 +29,8 @@ const PersonalInfo = ({ state, handleChange }) => {
             className='field--input'
             label='Nome' placeholder='Ex: Ricardo Atakiama'
             value={state.name} onChange={handleChange}
+            error={Boolean(errors?.name)}
+            helperText={(errors?.name)}
           />
         </div>
         <div className='form--right-side'>
@@ -55,6 +57,8 @@ const PersonalInfo = ({ state, handleChange }) => {
             className='field--input'
             label='E-mail' placeholder='Ex: atakiama@usp.br'
             value={state.email} onChange={handleChange}
+            error={Boolean(errors?.email)}
+            helperText={(errors?.email)}
           >
           </TextField>
         </div>
@@ -84,6 +88,8 @@ const PersonalInfo = ({ state, handleChange }) => {
             className='field--input'
             label='Telefone' placeholder='Ex: (12)12345-1234'
             value={state.phone} onChange={handleChange}
+            error={Boolean(errors?.phone)}
+            helperText={(errors?.phone)}
           >
           </TextField>
         </div>
@@ -94,6 +100,8 @@ const PersonalInfo = ({ state, handleChange }) => {
             className='field--input'
             label='Celular' placeholder='Ex: (16)99464-3295'
             value={state.cell} onChange={handleChange}
+            error={Boolean(errors?.cell)}
+            helperText={(errors?.cell)}
           >
           </TextField>
         </div>

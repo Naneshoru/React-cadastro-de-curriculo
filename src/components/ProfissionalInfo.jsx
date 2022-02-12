@@ -1,6 +1,6 @@
 import { TextField } from "@material-ui/core";
 
-const ProfissionalInfo = ({ state, handleChange }) => {
+const ProfissionalInfo = ({ state, handleChange, errors }) => {
   return ( 
     <>
       <div className='data-category'><p>Dados profissionais</p></div>
@@ -13,6 +13,8 @@ const ProfissionalInfo = ({ state, handleChange }) => {
             className='field--input'   
             label='Objetivo profissional' placeholder='Ex: Desenvolvimento Front-End'
             value={state.objective} onChange={handleChange}
+            error={Boolean(errors?.objective)}
+            helperText={(errors?.objective)}
           >
           </TextField>
         </div>
@@ -23,6 +25,8 @@ const ProfissionalInfo = ({ state, handleChange }) => {
             className='field--input'   
             label='Link' placeholder='Ex: https://www.linkedin.com/in/ricardo-atakiama-4827411b5/'
             value={state.url} onChange={handleChange}
+            error={Boolean(errors?.url)}
+            helperText={(errors?.url)}
           >
           </TextField>
         </div>
@@ -37,6 +41,8 @@ const ProfissionalInfo = ({ state, handleChange }) => {
             value={state.description} onChange={handleChange}
             placeholder='Faça um resumo de suas qualificações, habilidades e realizações profissionais.'
             label='Descrição profissional'
+            error={Boolean(errors?.description)}
+            helperText={(errors?.description)}
             >
           </TextField>
         </div>
