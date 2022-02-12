@@ -1,4 +1,4 @@
-import { List, ListItem, ListItemText } from '@material-ui/core';
+import { Grid, ListItemText, Typography } from '@material-ui/core';
 import moment from "moment";
 import React from 'react'
 
@@ -49,7 +49,7 @@ const ConfirmInfo = ({ state }) => {
       case false:
         return 'Não'
       default:
-        break;
+        return value;
     }
   }
 
@@ -61,20 +61,26 @@ const ConfirmInfo = ({ state }) => {
   return ( 
     <>
       <h3>Confirme seus dados</h3>
-      <List style={{ padding: '24px' }}>    
-        {Object.keys(state).map((field) => {
-          return (
-            <ListItem key={field} >
-              <ListItemText primary={
-                <>
-                  <span className='property'>{ propertiesToPortuguese(field) + ': ' }</span> 
-                  <span className='value'>{ valuesToPortuguese(formatIfDate(state[field])) }</span>
-                </>
-              } />
-            </ListItem>
-          );
-        })}
-      </List>      
+      <Grid container style={{ padding: '24px' }}>
+        <Grid item md={4} />
+        <Grid item container md={8} spacing={2}>
+          {Object.keys(state).map((field) => {
+            return (
+              <>
+                <Grid item key={field} md={12} justifyContent="center">
+                  <Typography align='left'>
+                    <span className='property'>{ propertiesToPortuguese(field) + ': ' }</span> 
+                    <span className='value'>{ valuesToPortuguese(formatIfDate(state[field])) }</span>
+                  </Typography>
+                </Grid>
+              </>
+            );
+          })}
+        </Grid>
+
+        <Grid item md />
+
+      </Grid>      
     </>
   );
 }
