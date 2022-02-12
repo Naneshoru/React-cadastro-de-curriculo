@@ -3,6 +3,7 @@ import ConfirmPage from './ConfirmPage';
 import SuccessPage from './SuccessPage';
 import PersonalInfo from './PersonalInfo';
 import ProfissionalInfo from './ProfissionalInfo';
+import moment from "moment";
 import './Registration.scss'
 
 const Registration = () => {
@@ -11,7 +12,7 @@ const Registration = () => {
     name: '',
     maritalStatus: 'Single',
     email: '',
-    birthDate: new Date(),
+    birthDate: moment(new Date()).format('DD-MM-YYYY'),
     phone: '',
     cell: '',
     hasChild: false,
@@ -51,7 +52,6 @@ const Registration = () => {
         break;
       case 'hasChild':
         setState({...state, hasChild: e.target.value });
-        console.log(state)
         break;
       case 'objective':
         setState({...state, objective: e.target.value });

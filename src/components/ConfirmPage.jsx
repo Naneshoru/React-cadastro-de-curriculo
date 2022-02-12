@@ -1,4 +1,4 @@
-import { Grid, ListItemText, Typography } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import moment from "moment";
 import React from 'react'
 
@@ -55,25 +55,23 @@ const ConfirmInfo = ({ state }) => {
 
   const formatIfDate = (date) => {
     const formattedDate = moment(date).format('DD-MM-YYYY');
-    return moment(date).isValid() ? formattedDate : date
+    return moment.isMoment(date) ? formattedDate : date
   }
 
   return ( 
     <>
       <h3>Confirme seus dados</h3>
       <Grid container style={{ padding: '24px' }}>
-        <Grid item md={4} />
+        <Grid item md={3} />
         <Grid item container md={8} spacing={2}>
           {Object.keys(state).map((field) => {
             return (
-              <>
-                <Grid item key={field} md={12} justifyContent="center">
-                  <Typography align='left'>
-                    <span className='property'>{ propertiesToPortuguese(field) + ': ' }</span> 
-                    <span className='value'>{ valuesToPortuguese(formatIfDate(state[field])) }</span>
-                  </Typography>
-                </Grid>
-              </>
+              <Grid item key={field} md={12}>
+                <Typography align='left'>
+                  <span className='property'>{ propertiesToPortuguese(field) + ': ' }</span> 
+                  <span className='value'>{ valuesToPortuguese(formatIfDate(state[field])).toString() }</span>
+                </Typography>
+              </Grid>
             );
           })}
         </Grid>
