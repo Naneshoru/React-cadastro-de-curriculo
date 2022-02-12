@@ -23,7 +23,7 @@ const PersonalInfo = ({ state, handleChange }) => {
 
       <div className='form-side-by-side'>
         <div className='form--left-side'>
-          <TextField autoFocus
+          <TextField autoFocus required
             type="text" name="fullName"
             variant='outlined' color='secondary'
             className='field--input'
@@ -32,14 +32,13 @@ const PersonalInfo = ({ state, handleChange }) => {
           />
         </div>
         <div className='form--right-side'>
-          <TextField 
+          <TextField required
             select name="maritalStatus"
             variant='outlined' color='secondary'  
             className={`field--input align-left`} 
             label='Estado civil'
             value={state.maritalStatus} onChange={handleChange}
             options={maritalOptions}
-            
           >
             {maritalOptions.map((option) => {
               return <MenuItem key={option.value} value={option.value}>{option.label}</MenuItem>
@@ -49,8 +48,9 @@ const PersonalInfo = ({ state, handleChange }) => {
       </div>
       <div className='form-side-by-side'>
         <div className='form--left-side'>
-          <TextField
+          <TextField required
             type='email' name='email'
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
             variant='outlined' color='secondary'
             className='field--input'
             label='E-mail' placeholder='Ex: atakiama@usp.br'
@@ -60,7 +60,7 @@ const PersonalInfo = ({ state, handleChange }) => {
         </div>
 
         <div className='form--right-side'>
-          <KeyboardDatePicker 
+          <KeyboardDatePicker required
             autoOk
             disableToolbar
             id='date-picker' name="birthDate"            
@@ -70,6 +70,8 @@ const PersonalInfo = ({ state, handleChange }) => {
             className='field--input date-input' 
             label='Data de nascimento'
             value={state.birthDate} onChange={e => handleChange(setEventNameAndValue('birthDate', e))}
+            InputLabelProps={{ shrink: true }}
+            invalidDateMessage='Formato de data inválida'
           />
         </div>
       </div>
@@ -86,7 +88,7 @@ const PersonalInfo = ({ state, handleChange }) => {
           </TextField>
         </div>
         <div className='form--right-side'>
-          <TextField
+          <TextField required
             type='text' name="cell"
             variant='outlined' color='secondary'
             className='field--input'

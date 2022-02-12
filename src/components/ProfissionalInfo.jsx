@@ -7,7 +7,7 @@ const ProfissionalInfo = ({ state, handleChange }) => {
 
       <div className='form-side-by-side'>
         <div className='form--left-side'>
-          <TextField autoFocus
+          <TextField autoFocus required
             type='text' name="objective"
             variant='outlined' color='secondary'
             className='field--input'   
@@ -30,7 +30,7 @@ const ProfissionalInfo = ({ state, handleChange }) => {
 
       <div className='form-side-by-side'>
         <div className='form--left-side'>
-          <TextField 
+          <TextField required
             multiline name="description" rows="10"
             variant='outlined' color='secondary'  
             className='field--input'   
@@ -41,7 +41,7 @@ const ProfissionalInfo = ({ state, handleChange }) => {
           </TextField>
         </div>
         <div className='form--right-side'>
-          <TextField
+          <TextField required
             type='file' name="curriculum"
             variant='outlined' color='secondary'
             className='field--input'
