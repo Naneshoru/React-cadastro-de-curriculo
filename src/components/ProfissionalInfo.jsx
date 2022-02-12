@@ -46,7 +46,7 @@ const ProfissionalInfo = ({ state, handleChange }) => {
             variant='outlined' color='secondary'
             className='field--input'
             label='Currículo' InputLabelProps={{ shrink: true }}
-            value={state.curriculum} onChange={handleChange}
+            onChange={handleChange}
           >
           </TextField>
         </div>
