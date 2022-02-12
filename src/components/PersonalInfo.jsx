@@ -1,4 +1,6 @@
 import { Checkbox, FormControl, FormControlLabel, MenuItem, TextField } from '@material-ui/core';
+import { KeyboardDatePicker } from '@material-ui/pickers'
+import MomentUtils from '@date-io/moment'
 import React from 'react';
 
 const PersonalInfo = ({ state, handleChange }) => {
@@ -10,7 +12,7 @@ const PersonalInfo = ({ state, handleChange }) => {
     {label: "Viúvo(a)", value: 'Widowed'}
   ]
 
-  const setCheckboxEventNameAndValue = (name, value) => ({
+  const setEventNameAndValue = (name, value) => ({
     target: {
       name, value
     }
@@ -59,13 +61,15 @@ const PersonalInfo = ({ state, handleChange }) => {
         </div>
 
         <div className='form--right-side'>
-          <TextField 
-            type="date" name="birthDate"
-            // format="DD/MM/yyyy"
-            variant='outlined' color='secondary'  
+          <KeyboardDatePicker 
+            autoOk
+            disableToolbar
+            id='date-picker' name="birthDate"            
+            format="dd/MM/yyyy" 
+            inputVariant="outlined"
             className='field--input date-input' 
-            label='Data de nascimento' InputLabelProps={{ shrink: true }}
-            value={state.birthDate} onChange={handleChange}
+            label='Data de nascimento'
+            value={state.birthDate} onChange={e => handleChange(setEventNameAndValue('birthDate', e))}
           />
         </div>
       </div>
@@ -101,7 +105,7 @@ const PersonalInfo = ({ state, handleChange }) => {
                 name="hasChild"  
                 color='secondary'
                 checked={state.hasChild} 
-                onChange={(e) => {handleChange(setCheckboxEventNameAndValue('hasChild', e.target.checked))}}
+                onChange={(e) => {handleChange(setEventNameAndValue('hasChild', e.target.checked))}}
               />}
               label='Possui filho(s)?'
             >

@@ -4,6 +4,7 @@ import SuccessPage from './SuccessPage';
 import PersonalInfo from './PersonalInfo';
 import ProfissionalInfo from './ProfissionalInfo';
 import './Registration.scss'
+import moment from 'moment'
 
 const Registration = () => {
   const lastPageStep = 3;
@@ -11,7 +12,7 @@ const Registration = () => {
     name: '',
     maritalStatus: 'Single',
     email: '',
-    birthDate: '',
+    birthDate: moment(new Date()).format('DD-MM-YYYY'),
     phone: '',
     cell: '',
     hasChild: false,
@@ -41,7 +42,7 @@ const Registration = () => {
         setState({...state, email: e.target.value });
         break;
       case 'birthDate':
-        setState({...state, birthDate: e.target.value });
+        setState({...state, birthDate: e.target.value.toString() });
         break;
       case 'phone':
         setState({...state, phone: e.target.value });
