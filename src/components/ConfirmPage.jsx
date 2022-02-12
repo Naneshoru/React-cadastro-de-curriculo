@@ -1,5 +1,5 @@
 import { List, ListItem, ListItemText } from '@material-ui/core';
-import moment from 'moment'
+import moment from "moment";
 import React from 'react'
 
 const ConfirmInfo = ({ state }) => {
@@ -32,6 +32,11 @@ const ConfirmInfo = ({ state }) => {
     }
   }
 
+  const formatIfDate = (date) => {
+    const formattedDate = moment(date).format('DD-MM-YYYY');
+    return moment(date).isValid() ? formattedDate : date
+  }
+
   return ( 
     <>
       <h3>Confirme seus dados</h3>
@@ -42,13 +47,7 @@ const ConfirmInfo = ({ state }) => {
               <ListItemText primary={
                 <>
                   <span className='property'>{ propertiesToPortuguese(field) + ': ' }</span> 
-                  {
-                    <span className='value'>{ 
-                      (!(state[field] instanceof Date)) ? 
-                      state[field].toString() :
-                      moment(state[field]).format('DD-MM-YYYY').toString()
-                    }</span>
-                  }
+                  <span className='value'>{ formatIfDate(state[field]).toString()}</span>
                 </>
               } />
             </ListItem>
