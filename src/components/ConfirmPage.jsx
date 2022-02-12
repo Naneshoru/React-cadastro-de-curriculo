@@ -42,7 +42,13 @@ const ConfirmInfo = ({ state }) => {
               <ListItemText primary={
                 <>
                   <span className='property'>{ propertiesToPortuguese(field) + ': ' }</span> 
-                  <span className='value'>{ moment(state[field]).format('DD-MM-YYYY').toString() }</span>
+                  {
+                    <span className='value'>{ 
+                      (!(state[field] instanceof Date)) ? 
+                      state[field].toString() :
+                      moment(state[field]).format('DD-MM-YYYY').toString()
+                    }</span>
+                  }
                 </>
               } />
             </ListItem>
