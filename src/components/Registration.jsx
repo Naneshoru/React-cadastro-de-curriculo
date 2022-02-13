@@ -16,7 +16,7 @@ const Registration = () => {
     name: '',
     maritalStatus: 'Single',
     email: '',
-    birthDate: moment(new Date()).format('DD-MM-YYYY'),
+    birthDate: moment(),
     phone: '',
     cell: '',
     hasChild: false,
