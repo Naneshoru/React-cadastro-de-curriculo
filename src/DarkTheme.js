@@ -21,7 +21,36 @@ const DarkTheme = createTheme ({
       root: {
         color: 'white', 
       },
-    }
+    },
+    MuiStepper: {
+      root: {
+        backgroundColor: Variables.lightAccent,  
+      }
+    },
+    MuiStepLabel: {
+      label: {
+        '&$active': {
+          color: 'white',
+          'font-weight': 'bold',
+          'font-size': '1em'
+        },
+        '&:not($active)': {
+          color: 'white',
+          'font-weight': 'bold',
+        }
+      },
+    },
+    MuiStepIcon: {
+      root: {
+        '&$active': {
+          color: Variables.mainBrand,
+          'font-size': '1.6em'
+        },
+        '&$completed': {
+          color: Variables.mainBrand,
+        },
+      },
+    },
   }
 });
 
