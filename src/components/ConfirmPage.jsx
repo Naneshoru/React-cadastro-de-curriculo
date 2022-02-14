@@ -63,7 +63,6 @@ const ConfirmInfo = ({ state }) => {
 
   return ( 
     <>
-      <h3>Confirme seus dados</h3>
       <Grid container style={{ padding: '24px' }}>
         <Grid item md={3} />
         <Grid item container md={8} spacing={2}>

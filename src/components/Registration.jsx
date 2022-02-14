@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Step, StepLabel, Stepper } from '@material-ui/core';
 import ConfirmPage from './ConfirmPage';
 import SuccessPage from './SuccessPage';
 import PersonalInfo from './PersonalInfo';
@@ -7,9 +8,10 @@ import moment from "moment";
 import './Registration.scss'
 
 const Registration = () => {
-  const lastPageStep = 3;
+  const pageNames = ['Dados pessoais', 'Dados profissionais', 'Confirmação de dados']
+  const lastPageStep = 2;
   const [formState, setFormState] = useState({
-    step: 1,
+    step: 0,
   })
 
   const [state, setState] = useState({
@@ -105,7 +107,6 @@ const Registration = () => {
         break;
       case 'url':
         setState({...state, url: e.target.value });
-
         setErrors({ ...errors, url: '' });
 
         if (!RegExp(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/).test(e.target.value)) {
@@ -155,13 +156,13 @@ const Registration = () => {
 
   const setCurrentPage = (state, formState) => {
     switch (formState.step) {
-      case 1:
+      case 0:
         return (<PersonalInfo state={state} errors={errors} handleChange={handleChange} />);
-      case 2:
+      case 1:
         return (<ProfissionalInfo state={state} errors={errors} handleChange={handleChange} />);
-      case 3:
+      case 2:
         return (<ConfirmPage state={state} />);
-      case 4:
+      case 3:
         return (<SuccessPage />);
       default:
         return null;
@@ -174,17 +175,23 @@ const Registration = () => {
         
         <div className='form-header'><strong><p>Currículo</p></strong></div>
 
+        <div className='data-category'>
+          <Stepper activeStep={formState.step} alternativeLabel>
+            {pageNames.map((page) => (<Step key={page}><StepLabel>{page}</StepLabel></Step>))}
+          </Stepper>
+        </div>
+
         {setCurrentPage(state, formState)}
 
         <div className='form-footer'>
-          {formState.step > 1 && formState.step <= lastPageStep && 
+          {formState.step > 0 && formState.step <= lastPageStep && 
           <button onClick={(e) => previousStep(e)}>Voltar</button>}
           
           {formState.step < lastPageStep && 
           <button onClick={(e) => nextStep(e)}>Próximo</button>}
 
           {formState.step === lastPageStep && 
-          <button type="submit" className='submit-button' onClick={(e) => nextStep(e)}>Enviar</button>}
+          <button type="submit" className='submit-button' onClick={(e) => nextStep(e)} disabled={!(Object.values(errors).every(x => x === ''))}>Enviar</button>}
         </div>
       </form>
     </div>

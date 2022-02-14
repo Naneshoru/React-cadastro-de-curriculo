@@ -19,8 +19,6 @@ const PersonalInfo = ({ state, handleChange, errors }) => {
 
   return ( 
     <>
-      <div className='data-category'><p>Dados pessoais</p></div>
-
       <div className='form-side-by-side'>
         <div className='form--left-side'>
           <TextField autoFocus required
