@@ -54,10 +54,8 @@ const ConfirmInfo = ({ state }) => {
   }
 
   const formatIfDate = (date) => {
-    console.log(date)
     const formattedDate = moment(date).format('DD/MM/YYYY');
-    console.log(formattedDate)
-
+    
     return moment.isMoment(date) ? formattedDate : date
   }
 

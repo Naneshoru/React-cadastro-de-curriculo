@@ -58,8 +58,7 @@ const PersonalInfo = ({ state, handleChange, setEventNameAndValue, errors, showE
 
         <div className='form--right-side'>
           <KeyboardDatePicker required
-            autoOk
-            disableToolbar
+            autoOk disableToolbar
             id='date-picker' name="birthDate"            
             format="DD/MM/yyyy" 
             inputVariant="outlined"
