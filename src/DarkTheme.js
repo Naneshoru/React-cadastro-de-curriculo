@@ -125,6 +125,13 @@ const DarkTheme = createTheme ({
       }
     },
     // ================ </CALENDAR> ================
+
+    MuiPaper: {
+      root: {
+        backgroundColor: Variables.mainBrand,
+        color: 'white'
+      }
+    }
   }
 });
 
