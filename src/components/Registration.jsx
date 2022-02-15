@@ -254,13 +254,13 @@ const Registration = () => {
 
         <div className='form-footer'>
           {formState.step > 0 && formState.step <= lastPageStep && 
-          <button onClick={(e) => previousStep(e)}>Voltar</button>}
+          <button onClick={(e) => previousStep(e)} className='button'>Voltar</button>}
           
           {formState.step < lastPageStep && 
-          <button onClick={(e) => nextStep(e)}>Próximo</button>}
+          <button onClick={(e) => nextStep(e)} className='button'>Próximo</button>}
 
           {formState.step === lastPageStep && 
-          <button type="submit" className='submit-button' onClick={(e) => nextStep(e)} disabled={!(Object.values(errors).every(x => x === ''))}>Enviar</button>}
+          <button type="submit" className='submit-button button' onClick={(e) => nextStep(e)} disabled={!(Object.values(errors).every(x => x === ''))}>Enviar</button>}
         </div>
       </form>
     </div>

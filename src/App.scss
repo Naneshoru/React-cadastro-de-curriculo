@@ -38,36 +38,32 @@ input, select, textarea, option {
   align-self: center;
 }
 
-button {
-  background: 
-  linear-gradient(135deg, rgba(#000000,0.2),rgba(#ffffff,0.2)),
-  $light-accent;
+.button {
+  background: $light-accent;
+  box-shadow:inset 0px 34px 0px -24px darken($light-accent, 6%);
+  background-color: $light-accent;
+
   color: white;
   padding: 8px 16px;
-  border-radius: 5px;
-  border:none;
+  border-radius: 40px;
+  border: none;
 
   &:focus{
-      outline: none;
+    outline: none;
   }
   &:hover{
-      background: 
-      linear-gradient(135deg, rgba(#000000,0.2),rgba(#ffffff,0.2)),
-      $light-brand;
-      cursor: pointer;
-      color: $light-shade;
+    background-color: darken($light-accent, 10%);
+    cursor: pointer;
   }
   &:disabled{
-      background-color: $dark-accent;
-      color: $dark-shade;
-      cursor: not-allowed;
+    box-shadow:inset 0px 34px 0px -24px darken($dark-shade, 6%);
+    background-color: $dark-shade;
+    cursor: not-allowed;
   }   
   &.--black{
-      background: 
-      linear-gradient(135deg, rgba(#000000,0.2),rgba(#ffffff,0.2)),
-      #2c2c2c;
+    background-color: #2d2d2d;
   }
   &.--full{
-      width: 100%;
+    width: 100%;
   }
 }
