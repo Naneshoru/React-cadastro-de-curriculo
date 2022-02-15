@@ -3,7 +3,7 @@
 Este projeto é estudo de formulários multi-step em React.
 
 -Foi utilizado estado e portanto é um controlled form.
-  *há um estado para os valores dos campos, para as mensagens de erros e também para mostrar cada erro.
+  <br>*há um estado para os valores dos campos, para as mensagens de erros e também para mostrar cada erro.
 
 -A validação foi feita com Regex para cada caso.
 
