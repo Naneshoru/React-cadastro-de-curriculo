@@ -14,6 +14,7 @@ const DarkTheme = createTheme ({
           borderColor: 'lightgray'
         },
         '&$focused $notchedOutline': {
+          boxShadow: `0px 0px 5px 0px #019EE2, 0px 0px 20px 0px #019EE2, 0px 0px 10px 0px #019EE2`
         },
       }
     },
@@ -21,6 +22,16 @@ const DarkTheme = createTheme ({
       root: {
         color: 'white', 
       },
+    },
+    // MuiButtonBase: {
+    //   root: {
+    //     backgroundColor: Variables.lightAccent + '!important'
+    //   }
+    // },
+    MuiSvgIcon: {
+      root: {
+        color: 'white', 
+      }
     },
     MuiStepper: {
       root: {
