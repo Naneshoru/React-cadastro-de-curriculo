@@ -78,7 +78,7 @@ const Registration = () => {
         setState({...state, phone: e.target.value });
         setErrors({ ...errors, phone: '' });
 
-        if (!RegExp(/^\d{8,}$/).test(e.target.value)) {
+        if (!RegExp(/^$|^\d{8,}$/).test(e.target.value)) {
           setErrors({ ...errors, phone: 'Campo requer pelo menos 8 dígitos' });
         }
         if (!RegExp(/^\d*$/).test(e.target.value)) {
