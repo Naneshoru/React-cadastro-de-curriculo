@@ -1,8 +1,8 @@
 import { Checkbox, FormControl, FormControlLabel, MenuItem, TextField } from '@material-ui/core';
 import { KeyboardDatePicker } from '@material-ui/pickers'
-import React from 'react';
+import { React } from 'react';
 
-const PersonalInfo = ({ state, handleChange, errors }) => {
+const PersonalInfo = ({ state, handleChange, setEventNameAndValue, errors, showErrors, handleShowErrors }) => {
   const maritalOptions = [
     {label: "Solteiro(a)", value: 'Single'},
     {label: "Casado(a)", value: 'Married'},
@@ -10,12 +10,6 @@ const PersonalInfo = ({ state, handleChange, errors }) => {
     {label: "Divorciado(a)", value: 'Divorced'},
     {label: "Viúvo(a)", value: 'Widowed'}
   ]
-
-  const setEventNameAndValue = (name, value) => ({
-    target: {
-      name, value
-    }
-  })
 
   return ( 
     <>
@@ -26,9 +20,10 @@ const PersonalInfo = ({ state, handleChange, errors }) => {
             variant='outlined' color='secondary'
             className='field--input'
             label='Nome' placeholder='Ex: Ricardo Atakiama'
-            value={state.name} onChange={handleChange}
-            error={Boolean(errors?.name)}
-            helperText={(errors?.name)}
+            value={state.fullName} onChange={handleChange}
+            error={showErrors.fullName ? Boolean(errors?.fullName) : false}
+            helperText={(errors?.fullName)}
+            onBlur={handleShowErrors}
           />
         </div>
         <div className='form--right-side'>
@@ -50,13 +45,13 @@ const PersonalInfo = ({ state, handleChange, errors }) => {
         <div className='form--left-side'>
           <TextField required
             type='email' name='email'
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
             variant='outlined' color='secondary'
             className='field--input'
             label='E-mail' placeholder='Ex: atakiama@usp.br'
             value={state.email} onChange={handleChange}
-            error={Boolean(errors?.email)}
+            error={showErrors.email ? Boolean(errors?.email) : false}
             helperText={(errors?.email)}
+            onBlur={handleShowErrors}
           >
           </TextField>
         </div>
@@ -74,6 +69,7 @@ const PersonalInfo = ({ state, handleChange, errors }) => {
             value={state.birthDate} onChange={e => handleChange(setEventNameAndValue('birthDate', e))}
             InputLabelProps={{ shrink: true }}
             invalidDateMessage='Formato de data inválida'
+            // onBlur={handleShowErrors}
           />
         </div>
       </div>
@@ -86,8 +82,9 @@ const PersonalInfo = ({ state, handleChange, errors }) => {
             className='field--input'
             label='Telefone' placeholder='Ex: (12)12345-1234'
             value={state.phone} onChange={handleChange}
-            error={Boolean(errors?.phone)}
+            error={showErrors.phone ? Boolean(errors?.phone) : false}
             helperText={(errors?.phone)}
+            onBlur={handleShowErrors}
           >
           </TextField>
         </div>
@@ -98,8 +95,9 @@ const PersonalInfo = ({ state, handleChange, errors }) => {
             className='field--input'
             label='Celular' placeholder='Ex: (16)99464-3295'
             value={state.cell} onChange={handleChange}
-            error={Boolean(errors?.cell)}
+            error={showErrors.cell ? Boolean(errors?.cell) : false}
             helperText={(errors?.cell)}
+            onBlur={handleShowErrors}
           >
           </TextField>
         </div>

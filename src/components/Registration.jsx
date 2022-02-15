@@ -11,11 +11,11 @@ const Registration = () => {
   const pageNames = ['Dados pessoais', 'Dados profissionais', 'Confirmação de dados']
   const lastPageStep = 2;
   const [formState, setFormState] = useState({
-    step: 0,
+    step: 0
   })
 
   const [state, setState] = useState({
-    name: '',
+    fullName: '',
     maritalStatus: 'Single',
     email: '',
     birthDate: moment(),
@@ -28,32 +28,37 @@ const Registration = () => {
     curriculum: ''
   });
 
+  const required = 'Campo obrigatório';
+
   const [errors, setErrors] = useState({
-    name: '',
+    fullName: required,
     maritalStatus: '',
-    email: '',
+    email: required,
     birthDate: '',
     phone: '',
-    cell: '',
+    cell: required,
     hasChild: '',
-    objective: '',
+    objective: required,
     url: '',
-    description: '',
-    curriculum: ''
+    description: required,
+    curriculum: required
   });
 
-  // https://restcountries.com/v3.1/all
+  const setEventNameAndValue = (name, value) => ({
+    target: {
+      name, value
+    }
+  })
 
   const handleChange = (e) => {
     console.log(e)
 
     switch (e.target.name) {
       case 'fullName':
-        setState({...state, name: e.target.value });
-        setErrors({ ...errors, name: '' });
-
-        if (!RegExp(/^[a-zA-Z]$/).test(e.target.value)) {
-          setErrors({ ...errors, name: 'Campo obrigatório' });
+        setState({...state, fullName: e.target.value });
+        setErrors({ ...errors, fullName: '' });
+        if (!RegExp(/^([\w]{2,})+\s+([\w\s]{2,})+$/i).test(e.target.value)) {
+          setErrors({ ...errors, fullName: 'Campo obrigatório' });
         }
         break;
       case 'maritalStatus':
@@ -62,7 +67,6 @@ const Registration = () => {
       case 'email':
         setState({...state, email: e.target.value });
         setErrors({ ...errors, email: '' });
-
         if (!RegExp(/^\S+@\S+\.\S+$/).test(e.target.value)) {
           setErrors({ ...errors, email: 'Formato de e-mail inválido' });
         }
@@ -75,14 +79,19 @@ const Registration = () => {
         setErrors({ ...errors, phone: '' });
 
         if (!RegExp(/^\d{8,}$/).test(e.target.value)) {
+          setErrors({ ...errors, phone: 'Campo requer pelo menos 8 dígitos' });
+        }
+        if (!RegExp(/^\d*$/).test(e.target.value)) {
           setErrors({ ...errors, phone: 'Somente números são permitidos' });
         }
         break;
       case 'cell':
         setState({...state, cell: e.target.value });
         setErrors({ ...errors, cell: '' });
-
         if (!RegExp(/^\d{9,}$/).test(e.target.value)) {
+          setErrors({ ...errors, cell: 'Campo requer pelo menos 9 dígitos' });
+        }
+        if (!RegExp(/^\d*$/).test(e.target.value)) {
           setErrors({ ...errors, cell: 'Somente números são permitidos' });
         }
         break;
@@ -93,7 +102,7 @@ const Registration = () => {
         setState({...state, objective: e.target.value });
         setErrors({ ...errors, objective: '' });
 
-        if (!RegExp(/^[a-zA-Z]$/).test(e.target.value)) {
+        if (!RegExp(/^([a-z0-9])+$/i).test(e.target.value)) {
           setErrors({ ...errors, objective: 'Campo obrigatório' });
         }
         break;
@@ -101,7 +110,7 @@ const Registration = () => {
         setState({...state, description: e.target.value });
         setErrors({ ...errors, description: '' });
 
-        if (!RegExp(/^[a-zA-Z]$/).test(e.target.value)) {
+        if (!RegExp(/^([a-z0-9])+$/i).test(e.target.value)) {
           setErrors({ ...errors, description: 'Campo obrigatório' });
         }
         break;
@@ -112,10 +121,14 @@ const Registration = () => {
         if (!RegExp(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/).test(e.target.value)) {
           setErrors({ ...errors, url: 'Campo inválido' });
         }
-        
         break;
       case 'curriculum':
         setState({...state, curriculum: e.target.value });
+        setErrors({ ...errors, curriculum: '' });
+
+        if (!RegExp(/^.*\.(doc|DOC|docx|DOCX|pdf|PDF)$/).test(e.target.value)) {
+          setErrors({ ...errors, curriculum: 'Somente arquivos nos formatos doc, docx ou pdf' });
+        }
         break;
       default:
         break;
@@ -125,7 +138,7 @@ const Registration = () => {
   const handleSubmit = (e) => {
     alert(`
       step: ${state.step}
-      name: ${state.name}, 
+      fullName: ${state.fullName}, 
       maritalStatus: ${state.maritalStatus}
       birthDate: ${state.birthDate}
       email: ${state.email}
@@ -144,22 +157,78 @@ const Registration = () => {
     e.preventDefault();
     const { step } = formState;
 
-    setFormState({ ...formState, step: step + 1 })
+    setFormState({ ...formState, step: step + 1 });
   }
 
   const previousStep = (e) => {
     e.preventDefault();
     const { step } = formState;
 
-    setFormState({ ...formState, step: step - 1 })
+    setFormState({ ...formState, step: step - 1 });
+  }
+
+  const [showErrors, setshowErrors] = useState({
+    fullName: false,
+    maritalStatus: false,
+    email: false,
+    birthDate: false,
+    phone: false,
+    cell: false,
+    hasChild: false,
+    objective: false,
+    url: false,
+    description: false,
+    curriculum: false
+  })
+
+  const handleShowErrors = (e) => {
+    switch (e.target.name) {
+      case 'fullName':
+        setshowErrors({...showErrors, fullName: true });
+        break;
+      case 'maritalStatus':
+        setshowErrors({...showErrors, maritalStatus: true });
+        break; 
+      case 'email':
+        setshowErrors({...showErrors, email: true });
+        break;
+      case 'birthDate':
+        setshowErrors({...showErrors, birthDate: true });
+        break;
+      case 'phone':
+        setshowErrors({...showErrors, phone: true });
+        break;
+      case 'cell':
+        setshowErrors({...showErrors, cell: true });
+        break;
+      case 'hasChild':
+        setshowErrors({...showErrors, hasChild: true });
+        break;
+      case 'objective':
+        setshowErrors({...showErrors, objective: true });
+        break;
+      case 'description':
+        setshowErrors({...showErrors, description: true });
+        break;
+      case 'url':
+        setshowErrors({...showErrors, url: true });
+        break;
+      case 'curriculum':
+        setshowErrors({...showErrors, curriculum: true });
+        break;
+      default:
+        break;
+    }
   }
 
   const setCurrentPage = (state, formState) => {
     switch (formState.step) {
       case 0:
-        return (<PersonalInfo state={state} errors={errors} handleChange={handleChange} />);
+        return (<PersonalInfo state={state} handleChange={handleChange} setEventNameAndValue={setEventNameAndValue}
+          errors={errors} showErrors={showErrors} handleShowErrors={handleShowErrors} />);
       case 1:
-        return (<ProfissionalInfo state={state} errors={errors} handleChange={handleChange} />);
+        return (<ProfissionalInfo state={state} handleChange={handleChange} setEventNameAndValue={setEventNameAndValue}
+          errors={errors} showErrors={showErrors} handleShowErrors={handleShowErrors} />);
       case 2:
         return (<ConfirmPage state={state} />);
       case 3:

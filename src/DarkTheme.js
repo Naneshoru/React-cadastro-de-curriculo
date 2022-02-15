@@ -13,7 +13,7 @@ const DarkTheme = createTheme ({
         '&:hover $notchedOutline': {
           borderColor: 'lightgray'
         },
-        "&$focused $notchedOutline": {
+        '&$focused $notchedOutline': {
         },
       }
     },
