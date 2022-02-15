@@ -4,6 +4,7 @@ $light-accent: #e41057;
 $dark-accent: #79797d;
 $dark-shade: #292b32;
 $light-shade: #f5f5f4;
+$mui-secondary: #e41057;
 
 :export {
   mainBrand: $main-brand;
@@ -11,5 +12,6 @@ $light-shade: #f5f5f4;
   lightAccent: $light-accent;
   darkAccent: $dark-accent;
   lightShade: $light-shade;
+  muiSecondary: $mui-secondary;
 }
 

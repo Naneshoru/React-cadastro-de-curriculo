@@ -3,6 +3,7 @@ import Variables from './sass/variables.scss'
 
 const DarkTheme = createTheme ({
   overrides: {
+    // ================ <INPUT FIELDS> ================
     MuiOutlinedInput: {
       root: {
         color: 'white', // todos os textos
@@ -18,21 +19,25 @@ const DarkTheme = createTheme ({
         },
       }
     },
-    MuiCheckbox: {
-      root: {
-        color: 'white', 
-      },
-    },
+    MuiCheckbox: { root: { color: 'white',  }, },
+    MuiSelect: { icon: { color: 'white' } },
     // MuiButtonBase: {
     //   root: {
     //     backgroundColor: Variables.lightAccent + '!important'
     //   }
     // },
+    // ================ </INPUT FIELDS> ================
     MuiSvgIcon: {
       root: {
-        color: 'white', 
-      }
+        // backgroundColor: Variables.lightAccent,  
+        color: 'white',
+      },
+
+      // '&:hover': {
+      //   backgroundColor: 'white',
+      // }
     },
+    // ================ <STEPPER> ================
     MuiStepper: {
       root: {
         backgroundColor: Variables.lightAccent,  
@@ -62,6 +67,64 @@ const DarkTheme = createTheme ({
         },
       },
     },
+    // ================ </STEPPER> ================
+    // ================ <CALENDAR> ================
+
+    MuiPickersCalendarHeader: {
+      iconButton: {
+        backgroundColor: Variables.mainBrand,
+
+        '&:hover': {
+          backgroundColor: Variables.darkAccent, 
+        }
+      },
+      dayLabel: {
+        color: 'white'
+      }
+    },
+    MuiPickersBasePicker: {
+      pickerView: {
+        backgroundColor: Variables.mainBrand,
+        color: 'white'
+      },
+        // backgroundColor: Variables.muiSecondary
+    },
+    MuiPickersDay: {
+      day: {
+        color: 'white', // dias no calendário
+
+        '&:hover': {
+          backgroundColor: Variables.darkAccent, 
+        }
+      },
+      daySelected: { // dia selecionado
+        backgroundColor: Variables.muiSecondary, // circulo
+
+        '&:hover': {
+          backgroundColor: 'red', 
+        }
+      },
+      current: { // dia atual
+      //   // backgroundColor: 'green',
+      //   border: `solid 1px ${Variables.muiSecondary}`,
+        color: Variables.muiSecondary
+      }
+    },
+    MuiDialogActions: {
+      root: {
+        backgroundColor: Variables.mainBrand,
+      }
+    },
+    MuiButton:{ // botões ok e cancel
+      textPrimary:{
+        color: 'white',
+
+        '&:hover': {
+          backgroundColor: Variables.darkAccent, 
+        }
+      }
+    },
+    // ================ </CALENDAR> ================
   }
 });
 

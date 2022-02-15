@@ -62,7 +62,6 @@ const PersonalInfo = ({ state, handleChange, setEventNameAndValue, errors, showE
             id='date-picker' name="birthDate"            
             format="DD/MM/yyyy" 
             inputVariant="outlined"
-            color='secondary'
             className='field--input date-input' 
             label='Data de nascimento'
             value={state.birthDate} onChange={e => handleChange(setEventNameAndValue('birthDate', e))}
