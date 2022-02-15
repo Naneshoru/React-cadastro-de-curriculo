@@ -246,7 +246,7 @@ const Registration = () => {
 
         <div className='data-category'>
           <Stepper activeStep={formState.step} alternativeLabel>
-            {pageNames.map((page) => (<Step key={page}><StepLabel>{page}</StepLabel></Step>))}
+            {pageNames.map((page) => (<Step key={page} completed={false}><StepLabel>{page}</StepLabel></Step>))}
           </Stepper>
         </div>
 
