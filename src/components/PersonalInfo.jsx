@@ -22,7 +22,7 @@ const PersonalInfo = ({ state, handleChange, setEventNameAndValue, errors, showE
             label='Nome' placeholder='Ex: Ricardo Atakiama'
             value={state.fullName} onChange={handleChange}
             error={showErrors.fullName ? Boolean(errors?.fullName) : false}
-            helperText={(errors?.fullName)}
+            helperText={errors.fullName}
             onBlur={handleShowErrors}
           />
         </div>
@@ -50,7 +50,7 @@ const PersonalInfo = ({ state, handleChange, setEventNameAndValue, errors, showE
             label='E-mail' placeholder='Ex: atakiama@usp.br'
             value={state.email} onChange={handleChange}
             error={showErrors.email ? Boolean(errors?.email) : false}
-            helperText={(errors?.email)}
+            helperText={errors.email}
             onBlur={handleShowErrors}
           >
           </TextField>
@@ -67,7 +67,6 @@ const PersonalInfo = ({ state, handleChange, setEventNameAndValue, errors, showE
             value={state.birthDate} onChange={e => handleChange(setEventNameAndValue('birthDate', e))}
             InputLabelProps={{ shrink: true }}
             invalidDateMessage='Formato de data inválida'
-            // onBlur={handleShowErrors}
           />
         </div>
       </div>
@@ -81,7 +80,7 @@ const PersonalInfo = ({ state, handleChange, setEventNameAndValue, errors, showE
             label='Telefone' placeholder='Ex: (12)12345-1234'
             value={state.phone} onChange={handleChange}
             error={showErrors.phone ? Boolean(errors?.phone) : false}
-            helperText={(errors?.phone)}
+            helperText={errors.phone}
             onBlur={handleShowErrors}
           >
           </TextField>
@@ -94,7 +93,7 @@ const PersonalInfo = ({ state, handleChange, setEventNameAndValue, errors, showE
             label='Celular' placeholder='Ex: (16)99464-3295'
             value={state.cell} onChange={handleChange}
             error={showErrors.cell ? Boolean(errors?.cell) : false}
-            helperText={(errors?.cell)}
+            helperText={errors.cell}
             onBlur={handleShowErrors}
           >
           </TextField>
