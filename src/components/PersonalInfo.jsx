@@ -61,7 +61,7 @@ const PersonalInfo = ({ state, handleChange, setEventNameAndValue, errors, showE
             autoOk disableToolbar
             id='date-picker' name="birthDate"            
             format="DD/MM/yyyy" 
-            inputVariant="outlined"
+            inputVariant="outlined" color='secondary'
             className='field--input date-input' 
             label='Data de nascimento'
             value={state.birthDate} onChange={e => handleChange(setEventNameAndValue('birthDate', e))}
