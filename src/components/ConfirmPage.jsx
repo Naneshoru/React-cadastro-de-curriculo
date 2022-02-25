@@ -5,7 +5,7 @@ import React from 'react'
 const ConfirmInfo = ({ state }) => {
   const propertiesToPortuguese = (prop) => {
     switch (prop) {
-      case 'name':
+      case 'fullName':
         return 'Nome';
       case 'maritalStatus':
         return 'Estado civil';
