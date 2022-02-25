@@ -15,7 +15,9 @@ const DarkTheme = createTheme ({
           borderColor: 'lightgray'
         },
         '&$focused $notchedOutline': {
-          boxShadow: `0px 0px 5px 0px #019EE2, 0px 0px 20px 0px #019EE2, 0px 0px 10px 0px #019EE2`
+          boxShadow: `0px 0px 5px 0px #019EE2, 
+                      0px 0px 10px 0px #019EE2,
+                      0px 0px 20px 0px #019EE2` 
         },
       }
     },
