@@ -9,8 +9,8 @@ import './Registration.scss'
 
 const Registration = () => {
   const pageNames = ['Dados pessoais', 'Dados profissionais', 'Confirmação de dados']
-  const lastPageStep = 2;
-  const [formState, setFormState] = useState({
+  const lastPageStep = pageNames.length - 1;
+  const [stepperState, setStepperState] = useState({
     step: 0
   })
 
@@ -44,15 +44,13 @@ const Registration = () => {
     curriculum: required
   });
 
-  const setEventNameAndValue = (name, value) => ({
+  const setEventTargetNameAndValue = (name, value) => ({
     target: {
       name, value
     }
   })
 
   const handleChange = (e) => {
-    console.log(e)
-
     switch (e.target.name) {
       case 'fullName':
         setState({...state, fullName: e.target.value });
@@ -155,16 +153,16 @@ const Registration = () => {
 
   const nextStep = (e) => {
     e.preventDefault();
-    const { step } = formState;
+    const { step } = stepperState;
 
-    setFormState({ ...formState, step: step + 1 });
+    setStepperState({ ...stepperState, step: step + 1 });
   }
 
   const previousStep = (e) => {
     e.preventDefault();
-    const { step } = formState;
+    const { step } = stepperState;
 
-    setFormState({ ...formState, step: step - 1 });
+    setStepperState({ ...stepperState, step: step - 1 });
   }
 
   const [showErrors, setshowErrors] = useState({
@@ -221,13 +219,13 @@ const Registration = () => {
     }
   }
 
-  const setCurrentPage = (state, formState) => {
-    switch (formState.step) {
+  const setCurrentPage = (state, stepperState) => {
+    switch (stepperState.step) {
       case 0:
-        return (<PersonalInfo state={state} handleChange={handleChange} setEventNameAndValue={setEventNameAndValue}
+        return (<PersonalInfo state={state} handleChange={handleChange} setEventTargetNameAndValue={setEventTargetNameAndValue}
           errors={errors} showErrors={showErrors} handleShowErrors={handleShowErrors} />);
       case 1:
-        return (<ProfissionalInfo state={state} handleChange={handleChange} setEventNameAndValue={setEventNameAndValue}
+        return (<ProfissionalInfo state={state} handleChange={handleChange} setEventTargetNameAndValue={setEventTargetNameAndValue}
           errors={errors} showErrors={showErrors} handleShowErrors={handleShowErrors} />);
       case 2:
         return (<ConfirmPage state={state} />);
@@ -245,21 +243,21 @@ const Registration = () => {
         <div className='form-header'><strong><p>Currículo</p></strong></div>
 
         <div className='data-category'>
-          <Stepper activeStep={formState.step} alternativeLabel>
+          <Stepper activeStep={stepperState.step} alternativeLabel>
             {pageNames.map((page) => (<Step key={page} completed={false}><StepLabel>{page}</StepLabel></Step>))}
           </Stepper>
         </div>
 
-        {setCurrentPage(state, formState)}
+        {setCurrentPage(state, stepperState)}
 
         <div className='form-footer'>
-          {formState.step > 0 && formState.step <= lastPageStep && 
+          {stepperState.step > 0 && stepperState.step <= lastPageStep && 
           <button onClick={(e) => previousStep(e)} className='button'>Voltar</button>}
           
-          {formState.step < lastPageStep && 
+          {stepperState.step < lastPageStep && 
           <button onClick={(e) => nextStep(e)} className='button'>Próximo</button>}
 
-          {formState.step === lastPageStep && 
+          {stepperState.step === lastPageStep && 
           <button type="submit" className='submit-button button' onClick={(e) => nextStep(e)} disabled={!(Object.values(errors).every(x => x === ''))}>Enviar</button>}
         </div>
       </form>
