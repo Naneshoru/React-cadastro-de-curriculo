@@ -1,6 +1,6 @@
 import { TextField } from "@material-ui/core";
 
-const ProfissionalInfo = ({ state, handleChange, setEventNameAndValue, errors, showErrors, handleShowErrors }) => {
+const ProfissionalInfo = ({ state, handleChange, setEventTargetNameAndValue, errors, showErrors, handleShowErrors }) => {
 
   return ( 
     <>
@@ -54,7 +54,7 @@ const ProfissionalInfo = ({ state, handleChange, setEventNameAndValue, errors, s
             variant='outlined' color='secondary'
             className='field--input'
             label='Currículo' InputLabelProps={{ shrink: true }}
-            onChange={(e) => {handleChange(setEventNameAndValue('curriculum', e.target.files[0].name))}}
+            onChange={(e) => {handleChange(setEventTargetNameAndValue('curriculum', e.target.files[0].name))}}
             error={showErrors.curriculum ? Boolean(errors?.curriculum) : false }
             helperText={errors.curriculum}
             onBlur={handleShowErrors}

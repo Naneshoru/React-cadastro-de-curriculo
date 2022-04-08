@@ -2,7 +2,7 @@ import { Checkbox, FormControl, FormControlLabel, MenuItem, TextField } from '@m
 import { KeyboardDatePicker } from '@material-ui/pickers'
 import { React } from 'react';
 
-const PersonalInfo = ({ state, handleChange, setEventNameAndValue, errors, showErrors, handleShowErrors }) => {
+const PersonalInfo = ({ state, handleChange, setEventTargetNameAndValue, errors, showErrors, handleShowErrors }) => {
   const maritalOptions = [
     {label: "Solteiro(a)", value: 'Single'},
     {label: "Casado(a)", value: 'Married'},
@@ -64,7 +64,7 @@ const PersonalInfo = ({ state, handleChange, setEventNameAndValue, errors, showE
             inputVariant="outlined" color='secondary'
             className='field--input date-input' 
             label='Data de nascimento'
-            value={state.birthDate} onChange={e => handleChange(setEventNameAndValue('birthDate', e))}
+            value={state.birthDate} onChange={e => handleChange(setEventTargetNameAndValue('birthDate', e))}
             InputLabelProps={{ shrink: true }}
             invalidDateMessage='Formato de data inválida'
           />
@@ -108,7 +108,7 @@ const PersonalInfo = ({ state, handleChange, setEventNameAndValue, errors, showE
                 name="hasChild"  
                 color='secondary'
                 checked={state.hasChild} 
-                onChange={(e) => {handleChange(setEventNameAndValue('hasChild', e.target.checked))}}
+                onChange={(e) => {handleChange(setEventTargetNameAndValue('hasChild', e.target.checked))}}
               />}
               label='Possui filho(s)?'
             >
