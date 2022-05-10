@@ -182,37 +182,17 @@ const Registration = () => {
   const handleShowErrors = (e) => {
     switch (e.target.name) {
       case 'fullName':
-        setshowErrors({...showErrors, fullName: true });
-        break;
       case 'maritalStatus':
-        setshowErrors({...showErrors, maritalStatus: true });
-        break; 
       case 'email':
-        setshowErrors({...showErrors, email: true });
-        break;
       case 'birthDate':
-        setshowErrors({...showErrors, birthDate: true });
-        break;
       case 'phone':
-        setshowErrors({...showErrors, phone: true });
-        break;
       case 'cell':
-        setshowErrors({...showErrors, cell: true });
-        break;
       case 'hasChild':
-        setshowErrors({...showErrors, hasChild: true });
-        break;
       case 'objective':
-        setshowErrors({...showErrors, objective: true });
-        break;
       case 'description':
-        setshowErrors({...showErrors, description: true });
-        break;
       case 'url':
-        setshowErrors({...showErrors, url: true });
-        break;
       case 'curriculum':
-        setshowErrors({...showErrors, curriculum: true });
+        setshowErrors({...showErrors, [e.target.name]: true });
         break;
       default:
         break;
