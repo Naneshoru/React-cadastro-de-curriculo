@@ -1,4 +1,4 @@
-import Registration from './components/Registration';
+import Registration from './pages/registration/Registration';
 import { ThemeProvider } from '@material-ui/core';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers'
 import MomentUtils from '@date-io/moment'

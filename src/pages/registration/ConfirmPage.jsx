@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid, Typography } from '@material-ui/core';
-import { formatIfDate, propertiesToPortuguese, valuesToPortuguese } from '../utils/functions';
+import { formatIfDate, propertiesToPortuguese, valuesToPortuguese } from '../../utils/functions';
 
 const ConfirmInfo = ({ state }) => {
   return ( 
