@@ -217,12 +217,12 @@ const Registration = () => {
   }
 
   return ( 
-    <div className='form-wrapper'>
-      <form className='form-container' onSubmit={(e) => handleSubmit(e)} >
+    <div className='form__wrapper'>
+      <form className='form__container' onSubmit={(e) => handleSubmit(e)} >
         
-        <div className='form-header'><strong><p>Currículo</p></strong></div>
+        <div className='form__header'><strong><p>Currículo</p></strong></div>
 
-        <div className='data-category'>
+        <div className='form__steps'>
           <Stepper activeStep={stepperState.step} alternativeLabel>
             {pageNames.map((page) => (<Step key={page} completed={false}><StepLabel>{page}</StepLabel></Step>))}
           </Stepper>
@@ -230,7 +230,7 @@ const Registration = () => {
 
         {setCurrentPage(state, stepperState)}
 
-        <div className='form-footer'>
+        <div className='form__footer'>
           {stepperState.step > 0 && stepperState.step <= lastPageStep && 
           <button onClick={(e) => previousStep(e)} className='button'>Voltar</button>}
           

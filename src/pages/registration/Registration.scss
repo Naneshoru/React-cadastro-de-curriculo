@@ -1,10 +1,10 @@
 @import "../../sass/variables.scss";
 
-.form-wrapper {
+.form__wrapper {
   padding: 92px;
 }
 
-.form-container {
+.form__container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,7 +15,7 @@
   background-color: $main-brand;
 }
 
-.form-header {
+.form__header {
   font-size: 1.5em;
 }
 
@@ -31,7 +31,7 @@
   padding: 8px;
 }
 
-.data-category {
+.form__steps {
   font-size: 1.2em;
   background-color: $light-accent;
   margin-bottom: 16px;
