@@ -1,6 +1,9 @@
 import { TextField } from "@material-ui/core";
+import { useRegistration } from '../../models/RegistrationContext';
 
-const ProfissionalInfo = ({ state, handleChange, setEventTargetNameAndValue, errors, showErrors, handleShowErrors }) => {
+const ProfissionalInfo = () => {
+
+  const { formState, handleChange, setEventTargetNameAndValue, errors, showErrors, handleShowErrors } = useRegistration();
 
   return ( 
     <>
@@ -11,7 +14,7 @@ const ProfissionalInfo = ({ state, handleChange, setEventTargetNameAndValue, err
             variant='outlined' color='secondary'
             className='field--input'   
             label='Objetivo profissional' placeholder='Ex: Desenvolvimento Front-End'
-            value={state.objective} onChange={handleChange}
+            value={formState.objective} onChange={handleChange}
             error={showErrors.objective ? Boolean(errors?.objective) : false }
             helperText={errors.objective}
             onBlur={handleShowErrors}
@@ -24,7 +27,7 @@ const ProfissionalInfo = ({ state, handleChange, setEventTargetNameAndValue, err
             variant='outlined' color='secondary'
             className='field--input'   
             label='Link' placeholder='Ex: https://www.linkedin.com/in/ricardo-atakiama-4827411b5/'
-            value={state.url} onChange={handleChange}
+            value={formState.url} onChange={handleChange}
             error={showErrors.url ? Boolean(errors?.url) : false }
             helperText={errors.url}
             onBlur={handleShowErrors}
@@ -39,7 +42,7 @@ const ProfissionalInfo = ({ state, handleChange, setEventTargetNameAndValue, err
             multiline name="description" rows="10"
             variant='outlined' color='secondary'  
             className='field--input'   
-            value={state.description} onChange={handleChange}
+            value={formState.description} onChange={handleChange}
             placeholder='Faça um resumo de suas qualificações, habilidades e realizações profissionais.'
             label='Descrição profissional'
             error={showErrors.description ? Boolean(errors?.description) : false }

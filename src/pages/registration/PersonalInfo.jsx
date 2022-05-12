@@ -1,8 +1,12 @@
 import { Checkbox, FormControl, FormControlLabel, MenuItem, TextField } from '@material-ui/core';
 import { KeyboardDatePicker } from '@material-ui/pickers'
 import { React } from 'react';
+import { useRegistration } from '../../models/RegistrationContext';
 
-const PersonalInfo = ({ state, handleChange, setEventTargetNameAndValue, errors, showErrors, handleShowErrors }) => {
+const PersonalInfo = () => {
+
+  const { formState, handleChange, setEventTargetNameAndValue, errors, showErrors, handleShowErrors } = useRegistration();
+
   const maritalOptions = [
     {label: "Solteiro(a)", value: 'Single'},
     {label: "Casado(a)", value: 'Married'},
@@ -20,7 +24,7 @@ const PersonalInfo = ({ state, handleChange, setEventTargetNameAndValue, errors,
             variant='outlined' color='secondary'
             className='field--input'
             label='Nome' placeholder='Ex: Ricardo Atakiama'
-            value={state.fullName} onChange={handleChange}
+            value={formState.fullName} onChange={handleChange}
             error={showErrors.fullName ? Boolean(errors?.fullName) : false}
             helperText={errors.fullName}
             onBlur={handleShowErrors}
@@ -32,7 +36,7 @@ const PersonalInfo = ({ state, handleChange, setEventTargetNameAndValue, errors,
             variant='outlined' color='secondary'  
             className={`field--input align-left`} 
             label='Estado civil'
-            value={state.maritalStatus} onChange={handleChange}
+            value={formState.maritalStatus} onChange={handleChange}
             options={maritalOptions}
           >
             {maritalOptions.map((option) => {
@@ -48,7 +52,7 @@ const PersonalInfo = ({ state, handleChange, setEventTargetNameAndValue, errors,
             variant='outlined' color='secondary'
             className='field--input'
             label='E-mail' placeholder='Ex: atakiama@usp.br'
-            value={state.email} onChange={handleChange}
+            value={formState.email} onChange={handleChange}
             error={showErrors.email ? Boolean(errors?.email) : false}
             helperText={errors.email}
             onBlur={handleShowErrors}
@@ -64,7 +68,7 @@ const PersonalInfo = ({ state, handleChange, setEventTargetNameAndValue, errors,
             inputVariant="outlined" color='secondary'
             className='field--input date-input' 
             label='Data de nascimento'
-            value={state.birthDate} onChange={e => handleChange(setEventTargetNameAndValue('birthDate', e))}
+            value={formState.birthDate} onChange={e => handleChange(setEventTargetNameAndValue('birthDate', e))}
             InputLabelProps={{ shrink: true }}
             invalidDateMessage='Formato de data inválida'
           />
@@ -78,7 +82,7 @@ const PersonalInfo = ({ state, handleChange, setEventTargetNameAndValue, errors,
             variant='outlined' color='secondary'
             className='field--input'
             label='Telefone' placeholder='Ex: (12)12345-1234'
-            value={state.phone} onChange={handleChange}
+            value={formState.phone} onChange={handleChange}
             error={showErrors.phone ? Boolean(errors?.phone) : false}
             helperText={errors.phone}
             onBlur={handleShowErrors}
@@ -91,7 +95,7 @@ const PersonalInfo = ({ state, handleChange, setEventTargetNameAndValue, errors,
             variant='outlined' color='secondary'
             className='field--input'
             label='Celular' placeholder='Ex: (16)99464-3295'
-            value={state.cell} onChange={handleChange}
+            value={formState.cell} onChange={handleChange}
             error={showErrors.cell ? Boolean(errors?.cell) : false}
             helperText={errors.cell}
             onBlur={handleShowErrors}
@@ -107,7 +111,7 @@ const PersonalInfo = ({ state, handleChange, setEventTargetNameAndValue, errors,
               control={<Checkbox
                 name="hasChild"  
                 color='secondary'
-                checked={state.hasChild} 
+                checked={formState.hasChild} 
                 onChange={(e) => {handleChange(setEventTargetNameAndValue('hasChild', e.target.checked))}}
               />}
               label='Possui filho(s)?'
