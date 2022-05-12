@@ -126,17 +126,26 @@ export const RegistrationProvider = ({ children }) => {
         setState({...formState, objective: e.target.value });
         setErrors({ ...errors, objective: '' });
 
-        if (!RegExp(/^([a-z0-9])+$/i).test(e.target.value)) {
-          setErrors({ ...errors, objective: 'Campo obrigatório' });
+        if (RegExp(/^$/i).test(e.target.value)) {
+          setErrors({ ...errors, description: 'Campo obrigatório' });
+        }
+
+        if (!RegExp(/^([a-z0-9\s])*$/i).test(e.target.value)) {
+          setErrors({ ...errors, objective: 'Apenas letras, números e espaços' });
         }
         break;
       case 'description':
         setState({...formState, description: e.target.value });
         setErrors({ ...errors, description: '' });
 
-        if (!RegExp(/^([a-z0-9])+$/i).test(e.target.value)) {
+        if (RegExp(/^$/i).test(e.target.value)) {
           setErrors({ ...errors, description: 'Campo obrigatório' });
         }
+
+        if (!RegExp(/^([a-z0-9\s])*$/i).test(e.target.value)) {
+          setErrors({ ...errors, description: 'Apenas letras, números e espaços' });
+        }
+
         break;
       case 'url':
         setState({...formState, url: e.target.value });
@@ -198,7 +207,7 @@ export const RegistrationProvider = ({ children }) => {
   }
 
   const isSubmitDisabled = () => 
-    !(Object.values(errors).every(x => x === ''))
+    Object.values(errors).length > 0 ? true : false
 
   return (
     <RegistrationContext.Provider 
