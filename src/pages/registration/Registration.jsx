@@ -52,7 +52,7 @@ const Registration = () => {
           <button onClick={(e) => nextStep(e)} className='button'>Próximo</button>}
 
           {stepperState.step === lastPageStep && 
-          <button type="submit" className='submit-button button' onClick={(e) => nextStep(e)} disabled={isSubmitDisabled}>Enviar</button>}
+          <button type="submit" className='submit-button button' onClick={(e) => nextStep(e)} disabled={isSubmitDisabled()}>Enviar</button>}
         </div>
       </form>
     </div>

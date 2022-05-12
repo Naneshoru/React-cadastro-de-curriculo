@@ -171,7 +171,7 @@ export const RegistrationProvider = ({ children }) => {
   const handleSubmit = (e) => {
     alert(`
       step: ${formState.step}
-      fullName: ${formState.fullName}, 
+      fullName: ${formState.fullName}
       maritalStatus: ${formState.maritalStatus}
       birthDate: ${formState.birthDate}
       email: ${formState.email}
@@ -207,7 +207,7 @@ export const RegistrationProvider = ({ children }) => {
   }
 
   const isSubmitDisabled = () => 
-    Object.values(errors).length > 0 ? true : false
+    Object.values(errors).length ? true : false
 
   return (
     <RegistrationContext.Provider 
