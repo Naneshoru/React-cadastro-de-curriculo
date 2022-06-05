@@ -207,7 +207,7 @@ export const RegistrationProvider = ({ children }) => {
   }
 
   const isSubmitDisabled = () => 
-    Object.values(errors).length ? true : false
+    Object.values(errors).some((el) => el)
 
   return (
     <RegistrationContext.Provider 
