@@ -127,7 +127,7 @@ export const RegistrationProvider = ({ children }) => {
         setErrors({ ...errors, objective: '' });
 
         if (RegExp(/^$/i).test(e.target.value)) {
-          setErrors({ ...errors, description: 'Campo obrigatório' });
+          setErrors({ ...errors, objective: 'Campo obrigatório' });
         }
 
         if (!RegExp(/^([a-z0-9\s])*$/i).test(e.target.value)) {
